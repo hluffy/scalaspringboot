@@ -75,7 +75,6 @@ class UserController @Resource()(val userRepository:UserRepository){
       */
     @GetMapping(Array("getinfosaspage"))
     def getInfosAsPage(page:Integer,size:Integer) = {
-        println(111)
         var userPage:Int = 0
         var userSize:Int = 5
         val sort = new Sort(Direction.DESC,"id")
