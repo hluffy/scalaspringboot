@@ -2,11 +2,11 @@ package com.dk.springboot.controller
 
 import javax.annotation.Resource
 
-import collection.JavaConverters._
 import com.dk.springboot.entity.User
 import com.dk.springboot.repository.UserRepository
 import com.dk.springboot.result.Result
-import com.fasterxml.jackson.databind.util.JSONPObject
+import org.springframework.data.domain.Sort.Direction
+import org.springframework.data.domain.{PageRequest, Sort}
 import org.springframework.web.bind.annotation._
 
 @RestController
@@ -37,15 +37,57 @@ class UserController @Resource()(val userRepository:UserRepository){
     def getUserTest(user:User) = {
         val result = new Result
         if(user.id==""){
-            result.status = false
-            result.message = "id不允许为空"
+            result.setStatus(false)
+            result.setMessage("id不允许为空")
         }else{
-            result.status = true
-            result.message = "success"
-            result.data = user
+            result.setStatus(true)
+            result.setData(user)
+            result.setMessage("success")
+        }
+        result
+    }
+
+    /**
+      * 自定义sql
+      * @return
+      */
+    @GetMapping(Array("getinfos"))
+    def getInfos = userRepository.getInfos
+
+    @GetMapping(Array("getinfobyid"))
+    def getInfoById(id:Long,page:Int,size:Int) = {
+        val sort = new Sort(Direction.DESC,"id")
+        val pageable = new PageRequest(page,size,sort)
+        userRepository.getInfoById(id,pageable)
+    }
+
+//    @GetMapping(Array("getinfo"))
+//    def getInfo(user:User) = {
+//        println(user)
+//        userRepository.getInfo(user)
+//    }
+
+    /**
+      * 查询所有用户信息，分页，排序
+      * @param page
+      * @param size
+      * @return
+      */
+    @GetMapping(Array("getinfosaspage"))
+    def getInfosAsPage(page:Integer,size:Integer) = {
+        println(111)
+        var userPage:Int = 0
+        var userSize:Int = 5
+        val sort = new Sort(Direction.DESC,"id")
+        if(page!=null){
+            userPage = page
+        }
+        if(size!=null){
+            userSize = size
         }
 
-        result
+        val pageable = new PageRequest(userPage,userSize,sort)
+        userRepository.getInfosAsPage(pageable)
     }
 
 }

@@ -2,43 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daa3305a-fb69-4926-8ae7-d0c0de5a1b4a" name="Default" comment="error">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_9.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_9.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_16.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_16.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_10.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_2_16_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_3_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_1_Final.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_6_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_6_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_5_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_10_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_10_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_10_RELEASE.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/scalaspringboot.iml" afterPath="$PROJECT_DIR$/scalaspringboot.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/TestController.scala" afterPath="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/TestController.scala" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/service/BaseService.scala" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/service/UserService.scala" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/controller/TestController.class" afterPath="$PROJECT_DIR$/target/classes/com/dk/springboot/controller/TestController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/dk/springboot/controller/UserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/com/dk/springboot/entity/User.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/dk/springboot/repository/UserRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/service/BaseService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/service/UserService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala" afterPath="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala" afterPath="$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala" afterPath="$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.scala" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/controller/UserController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/repository/UserRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/dk/springboot/result/Result.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,18 +55,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunApp.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/RunApp.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding>
-                <element signature="e#27#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestController.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/TestController.scala">
           <provider selected="true" editor-type-id="text-editor">
@@ -112,21 +71,39 @@
       <file leaf-file-name="UserController.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="47" column="14" lean-forward="false" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-              <folding>
-                <element signature="e#38#70#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-901">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Result.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.scala">
+      <file leaf-file-name="Result.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="135">
+              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding>
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#237#238#0" expanded="true" />
+                <element signature="e#256#257#0" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+                <element signature="e#339#340#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#486#487#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#536#537#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
+                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
+                <element signature="e#713#714#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,8 +111,8 @@
       <file leaf-file-name="User.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="118">
+              <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding>
                 <element signature="e#34#55#0" expanded="true" />
               </folding>
@@ -143,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRepository.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserRepository.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="525">
+              <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
               <folding>
                 <element signature="e#38#54#0" expanded="true" />
               </folding>
@@ -171,6 +148,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Scala Object" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -205,12 +183,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/serviceImpl/UserServerImpl.scala" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/dao/UserDao.scala" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala" />
         <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/TestController.scala" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.scala" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala" />
       </list>
     </option>
   </component>
@@ -331,7 +310,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="springboot" type="462c0819:PsiDirectoryNode" />
-              <item name="result" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="scalaspringboot" type="b2602c69:ProjectViewProjectNode" />
@@ -693,7 +672,7 @@
         <state relative-caret-position="240">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#27#76#0" expanded="true" />
+            <element signature="e#27#76#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -778,9 +757,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#70#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -789,7 +766,7 @@
         <state relative-caret-position="210">
           <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding>
-            <element signature="e#27#76#0" expanded="true" />
+            <element signature="e#27#76#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -864,7 +841,7 @@
         <state relative-caret-position="240">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#27#76#0" expanded="true" />
+            <element signature="e#27#76#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -900,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#38#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/TestController.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -929,16 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="47" column="14" lean-forward="false" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-          <folding>
-            <element signature="e#38#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -947,21 +904,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#237#238#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/entity/User.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="19" />
+        <state relative-caret-position="118">
+          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding>
             <element signature="e#34#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/result/Result.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/controller/UserController.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="-901">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dk/springboot/repository/UserRepository.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
