@@ -2,6 +2,7 @@ package com.dk.springboot.controller
 
 import javax.annotation.Resource
 
+import com.dk.springboot.dao.UserDao
 import com.dk.springboot.entity.User
 import com.dk.springboot.repository.UserRepository
 import com.dk.springboot.result.Result
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation._
 
 @RestController
 @RequestMapping(Array("user"))
-class UserController @Resource()(val userRepository:UserRepository){
+class UserController @Resource()(val userRepository:UserRepository,val userDao:UserDao){
 
     /**
       * 根据id查询用户信息
@@ -88,5 +89,13 @@ class UserController @Resource()(val userRepository:UserRepository){
         val pageable = new PageRequest(userPage,userSize,sort)
         userRepository.getInfosAsPage(pageable)
     }
+
+    /**
+      * 调用普通Dao
+      * @param user
+      * @return
+      */
+    @GetMapping(Array("getuser"))
+    def getUser(user:User) = userDao.getUser(user)
 
 }
