@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 
 @Repository
-trait UserRepository extends JpaRepository[User,Integer]{
+trait UserRepository extends JpaRepository[User,java.lang.Long]{
     def findById(id:Long):User
 
     def findAll(): util.List[User]
