@@ -1,17 +1,51 @@
 package com.dk.springboot.controller
 
-import com.dk.springboot.service.UserService
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.ComponentScan
-import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, RestController}
+import javax.annotation.Resource
 
-@ComponentScan
+import collection.JavaConverters._
+import com.dk.springboot.entity.User
+import com.dk.springboot.repository.UserRepository
+import com.dk.springboot.result.Result
+import com.fasterxml.jackson.databind.util.JSONPObject
+import org.springframework.web.bind.annotation._
+
 @RestController
-class UserController @Autowired()(private val userService : UserService){
+@RequestMapping(Array("user"))
+class UserController @Resource()(val userRepository:UserRepository){
 
-    @RequestMapping(value = Array("/list"), method = Array(RequestMethod.GET))
-    def list() = {
-        userService.findAll
+    /**
+      * 根据id查询用户信息
+      * @param id
+      * @return
+      */
+    @RequestMapping(value=Array("getuserbyid"),method = Array(RequestMethod.GET))
+    def getUserById(id:Long) = userRepository.findById(id)
+
+    /**
+      * 查询所有用户信息
+      * @return
+      */
+    @GetMapping(Array("getusers"))
+    def getUsers = userRepository.findAll
+
+    /**
+      * 测试
+      * @param user
+      * @return
+      */
+    @RequestMapping(value=Array("getusertest"),method = Array(RequestMethod.GET))
+    def getUserTest(user:User) = {
+        val result = new Result
+        if(user.id==""){
+            result.status = false
+            result.message = "id不允许为空"
+        }else{
+            result.status = true
+            result.message = "success"
+            result.data = user
+        }
+
+        result
     }
 
 }
