@@ -8,12 +8,12 @@ class MyInterceptor extends HandlerInterceptor{
 
     override def preHandle(request: HttpServletRequest, response: HttpServletResponse, o: scala.Any): Boolean = {
         val session = request.getSession(true)
-        println(session.getId)
+//        println(session.getId)
         if(session.getAttribute("userName")==null){
             response.sendRedirect(request.getContextPath+"/page/login")
             false
         }else{
-            println(session.getAttribute("userName"))
+//            println(session.getAttribute("userName"))
             true
         }
     }

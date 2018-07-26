@@ -6,6 +6,7 @@ import com.dk.springboot.dao.UserDao
 import com.dk.springboot.entity.User
 import com.dk.springboot.repository.UserRepository
 import com.dk.springboot.result.Result
+import com.dk.springboot.util.Md5Util
 import org.springframework.data.domain.Sort.Direction
 import org.springframework.data.domain.{PageRequest, Sort}
 import org.springframework.web.bind.annotation._
@@ -97,5 +98,16 @@ class UserController @Resource()(val userRepository:UserRepository,val userDao:U
       */
     @GetMapping(Array("getuser"))
     def getUser(user:User) = userDao.getUser(user)
+
+    /**
+      * 添加用户信息
+      */
+    @GetMapping(Array("save"))
+    def save() = {
+        val user = new User
+        user.name = "admin"
+        user.password = Md5Util.md5String("admin")
+        userRepository.save(user)
+    }
 
 }

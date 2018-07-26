@@ -40,5 +40,19 @@ trait UserRepository extends JpaRepository[User,java.lang.Long]{
     @Query(value="select u from users as u")
     def getInfosAsPage(pageable:Pageable):Page[User]
 
+    /**
+      * 根据name和password查询用户信息
+      * @param name
+      * @param password
+      * @return
+      */
+    def findByNameAndPassword(name:String,password:String):User
+
+    /**
+      * 添加用户信息
+      * @param user
+      */
+    def save(user:User)
+
 
 }

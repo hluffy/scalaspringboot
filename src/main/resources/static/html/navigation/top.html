@@ -1,0 +1,50 @@
+<div class="nav_menu">
+                <nav>
+                    <div class="nav toggle" style="padding-top:10px">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right" style="height:40px">
+                    	
+                        <li class=""><a href="javascript:;"
+                                        class="user-profile dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false" style="top:-6px;height:45px"> <i class="fa fa-user fa-3x"></i>&nbsp;{{wusername}}
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right" style="top:42px">
+                                <li><a ng-click="logout()"><i
+                                        class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a style="top:-6px;height:45px" class="dropdown-toggle"
+							data-toggle="dropdown"> <i class="fa fa-flag-o"></i> <span
+								class="label label-danger">0</span>
+						</a>
+							<ul class="dropdown-menu">
+								<li class="header"><span
+									class="glyphicon glyphicon-warning-sign"></span>&nbsp;<span
+									style="color: red; font-family: '黑体'">警告</span></li>
+								<li><span style="font-family: '黑体'">&nbsp;&nbsp;以下设备进入物流区
+								<span
+										style="padding-left: 30px">数量:<b style="color: red">0</b></span></span>
+									<ul class="menu" ng-repeat="x in warningInfos">
+										<li><a>
+												<h3>
+													<div>
+														<span> 设备号</span> <small class="pull-right">{{x.number}}</small>
+														<br> <span> Vin号</span> <small class="pull-right">{{x.vin}}</small>
+													</div>
+												</h3>
+										</a></li>
+			
+									</ul>
+								<li>
+									<a href="/welleplus/bindall.html" target="blank"> <!-- 					<h1> --> <!-- 										<div> -->
+										<small class="fa fa-arrow-right fa-2x">查看更多</small>
+									</a>
+								</li>
+							</ul></li>
+
+                    </ul>
+                </nav>
+            </div>

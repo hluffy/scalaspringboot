@@ -1,0 +1,421 @@
+<div style="overflow-y:scroll;width:100%;height:{{indexDiv}}">
+		<div class="col-md-12 col-sm-6 col-xs-12">
+	            <div class="x_content">
+					<div class="col-xs-12">
+						<form class="form-inline">
+							<div class="pull-right">
+								<button ng-click="getBolInfo()" class="btn btn-default"><i class="fa fa-search"></i></button>
+							</div>
+		              		<div class="input-group input-group-sm pull-right" style="margin-top:2px;width:30%">
+								<label class="sr-only">单号名称</label>
+								<input type="text" class="form-control" ng-model="bolNum" placeholder="请输入运单号，或预约单号，或回单号，或逆向运单号">
+							</div>
+							
+						</form>
+					</div>
+					<div class="col-xs-12">
+						<span ng-show="showspan">{{message}}</span>
+						<table ng-show="showtable">
+							<tr style="border-bottom:solid #000 1px">
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">关联运单号：</td>
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px"><b><a style="color:red;text-decoration: underline" title="货物详情..." ng-click="clickBolNum()">{{bol.bolNum}}</b></span></td>
+							</tr>
+<!-- 							<tr style="border-bottom:solid #000 1px"> -->
+<!-- 								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">入库预约单号：</td> -->
+<!-- 								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">{{appointmentNum}}</td> -->
+<!-- 							</tr> -->
+							<tr style="border-bottom:solid #000 1px">
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">入库预约单号：</td>
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px"><b><a style="color:red;text-decoration: underline;" title="货物详情..." ng-click="clickBolNum()">{{bol.appointment[0].appointmentNum}}</a></b></td>
+							</tr>
+							<tr style="border-bottom:solid #000 1px">
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">回单号：</td>
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px"><b ng-repeat="d in bol.deliveryReceipt">{{d.receiptNum}}<b ng-if="$index+1!=bol.deliveryReceipt.length">,</b></b></td>
+							</tr>
+							<tr style="border-bottom:solid #000 1px" ng-if="haveReturnBols">
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">退货逆向单号：</td>
+								<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px"><b ng-repeat="b in bol.bol">{{b.bolNum}}<b ng-if="$index+1!=bol.bol.length">,</b></b></td>
+							</tr>
+						</table>
+						
+					</div>
+					<!-- 					货物详情 -->
+					<div class="col-xs-12" ng-show="showLadingItems" style="margin-top:10px">
+						<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+						<div class="col-md-12 col-sm-6 col-xs-12" style="margin-bottom:15px">
+		            		<div class="container">
+					            <div class="row">
+					                <div class="col-sm-3">
+					                	<b>分单号&emsp;：</b>{{bol.bolNum}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>开始时间：</b>{{bol.orderTime}}
+					                </div>
+<!-- 					                <div class="clearfix" style="height:27px"></div> -->
+					                <div class="col-sm-3">
+					                    <b>接单时间：</b>{{bol.actualPickupTime}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>提货时间：</b>{{bol.actualDeliveryTime}}
+					                </div>
+					                
+					                <div class="col-sm-3">
+					                    <b>始发城市：</b>{{bol.srcCityName}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>目的城市：</b>{{bol.dstCityName}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>收货人&emsp;：</b>{{bol.consigneeName}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>收货地址：</b>{{bol.deliveryLocation}}
+					                </div>
+					                
+					                <div class="col-sm-3">
+					                    <b>物品名&emsp;：</b>{{bol.commodityCategoryName}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>件&emsp;&emsp;数：</b>{{bol.pieceNum}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>体&thinsp;积(m³)：</b>{{bol.volume}}
+					                </div>
+					                <div class="col-sm-3">
+					                    <b>重&thinsp;量(kg)：</b>{{bol.cargoWeight}}
+					                </div>
+					                
+					            </div>
+					        </div>
+		            	</div>
+						<span>货物详情：</span>
+						<div ng-repeat="t in bol.ladingItems">
+							<table>
+								<tr style="border-bottom:solid #000 1px">
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">物品名：</td>
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">{{t.commodityCategoryName}}</td>
+								</tr>
+								<tr style="border-bottom:solid #000 1px">
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">名称：</td>
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">{{t.comodityName}}</td>
+								</tr>
+								<tr style="border-bottom:solid #000 1px">
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">件数：</td>
+									<td style="padding:10px;margin:10px;width:230px;border: solid #ccc 0px">{{t.pieceNum}}</td>
+								</tr>
+							</table>
+							<hr ng-if="$index+1!=bol.ladingItems.length" style=" height:2px;border:none;border-top:2px dotted #185598;margin-top:45px"/>
+						</div>
+					</div>
+					<div class="col-xs-12" ng-show="showVivaTimeLine">
+						<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+						<div class="container">
+					        <div class="row">
+					            <div class="col-md-12">
+					                <div class="VivaTimeline">
+					                    <dl>
+					                        <dd class="pos-right clearfix mydd" ng-show="bol">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.orderTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">提货入仓</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul>
+					                                            	<li>地点：{{bol.pickupLocation}}</li>
+					                                            	<li>操作人：{{bol.operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>运单号：{{bol.bolNum}}</li>
+					                                            			<li>开单时间：{{bol.orderTime}}</li>
+					                                            			<li>件数：{{bol.pieceNum}} 件</li>
+					                                            			<li>重量：{{bol.cargoWeight}} kg</li>
+					                                            			<li>体积：{{bol.volume}} m³</li>
+					                                            			<li>收货人：{{bol.consigneeName}}</li>
+					                                            			<li>收货人地址：{{bol.deliveryLocation}}</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            </ul>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+					                        <dd class="pos-right clearfix" ng-show="bol.shipments.length!=0">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.shipments[0].operateTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">干线发车</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul>
+					                                            	<li>地点：{{bol.shipments[0].srcLocationName}}</li>
+					                                            	<li>操作人：{{bol.shipments[0].operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>发车时间：{{bol.shipments[0].startTime}}</li>
+					                                            			<li>车牌号：{{bol.shipments[0].truckNum}}</li>
+					                                            			<li>司机：{{bol.shipments[0].driverName}}</li>
+					                                            			<li>状态：{{bol.shipments[0].status}}</li>
+					                                            			<li>当前操作网点：{{bol.shipments[0].srcLocationName}}</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            </ul>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+					                        <dd class="pos-right clearfix" ng-show="bol.shipments.length!=0">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.shipments[0].operateTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">干线到达</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul>
+					                                            	<li>地点：{{bol.shipments[0].dstLocationName}}</li>
+					                                            	<li>操作人：{{bol.shipments[0].operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>到站时间：{{bol.shipments[0].endTime}}</li>
+					                                            			<li>状态：{{bol.shipments[0].status}}</li>
+					                                            			<li>当前操作网点：{{bol.shipments[0].dstLocationName}}</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            </ul>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+					                        <dd class="pos-right clearfix" ng-show="bol.appointment.length!=0">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.appointment[0].operateTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">预约入仓</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul class="myul">
+					                                            	<li>地点：{{bol.appointment[0].location}}</li>
+					                                            	<li>操作人：{{bol.appointment[0].operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>预约单号：{{bol.appointment[0].appointmentNum}}</li>
+					                                            			<li>预约日期：{{bol.appointment[0].appointmentDate}}</li>
+					                                            			<li>预约时间：{{bol.appointment[0].operateTime}}</li>
+					                                            			<li>入仓平台：{{bol.appointment[0].locationOwner}}</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            	<li ng-show="showViewMore" style="margin-top:5px"><a title="查看更多" style="color:red;text-decoration: underline;" ng-click="showAppointment()">查看更多 ({{bol.appointment.length}}) 。。。</a></li>
+					                                            </ul>
+					                                            <div ng-repeat="item in copyAppointmentNum" ng-if="ShowViewMoreAppointment">
+					                                            	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+					                                            	<ul class="myul" >
+						                                            	<li>地点：{{item.location}}</li>
+						                                            	<li>操作人：{{item.operatorName}}</li>
+						                                            	<li>详细信息：
+						                                            		<ul>
+						                                            			<li>预约单号：{{item.appointmentNum}}</li>
+						                                            			<li>预约日期：{{item.appointmentDate}}</li>
+						                                            			<li>预约时间：{{item.operateTime}}</li>
+						                                            			<li>入仓平台：{{item.locationOwner}}</li>
+						                                            		</ul>
+						                                            	</li>
+						                                            </ul>
+					                                            </div>
+					                                            
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+					                        <dd class="pos-right clearfix" ng-show="bol.shipments.length!=0">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.shipments[0].operateTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">配送发车</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul>
+					                                            	<li>地点：</li>
+					                                            	<li>操作人：{{bol.shipments[0].operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>装车单号：</li>
+					                                            			<li>司机名称：{{bol.shipments[0].driverName}}</li>
+					                                            			<li>车牌号：{{bol.shipments[0].truckNum}}</li>
+					                                            			<li>派送人：</li>
+					                                            			<li>装车时间：</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            </ul>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+					                        <dd class="pos-right clearfix" ng-show="bol.deliveryReceipt.length!=0">
+					                            <div class="circ"></div>
+					                            <div class="time" style="width:20%">{{bol.deliveryReceipt[0].operateTime}}</div>
+					                            <div class="events">
+					                                <div class="events-header">平台签收</div>
+					                                <div class="events-body">
+					                                    <div class="row">
+					                                        <div class="events-desc">
+					                                            <ul>
+					                                            	<li>地点：{{bol.deliveryReceipt[0].customerName}}</li>
+					                                            	<li>操作人：{{bol.deliveryReceipt[0].operatorName}}</li>
+					                                            	<li>详细信息：
+					                                            		<ul>
+					                                            			<li>回单号：<a style="color:#d146e0;text-decoration: underline;" title="查看明细" ng-click="clickReceiptNum(bol.deliveryReceipt[0])">{{bol.deliveryReceipt[0].receiptNum}}</a></li>
+					                                            			<li>签收状态：{{bol.deliveryReceipt[0].status}}</li>
+					                                            		</ul>
+					                                            	</li>
+					                                            	<li ng-show="showViewMoreDelivery" style="margin-top:5px"><a title="查看更多" style="color:red;text-decoration: underline;" ng-click="showDeliveryReceipt()">查看更多 ({{bol.deliveryReceipt.length}}) 。。。</a></li>
+					                                            </ul>
+					                                            <div ng-repeat="item in copyDeliveryReceipt" ng-if="showViewMoreDeliveryReceipt">
+					                                            	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+					                                       			<ul>
+						                                            	<li>地点：{{item.customerName}}</li>
+						                                            	<li>操作人：{{item.operatorName}}</li>
+						                                            	<li>详细信息：
+						                                            		<ul>
+						                                            			<li>回单号：<a style="color:#d146e0;text-decoration: underline;" title="查看明细" ng-click="clickReceiptNum(item)">{{item.receiptNum}}</a></li>
+						                                            			<li>签收状态：{{item.status}}</li>
+						                                            		</ul>
+						                                            	</li>
+						                                            </ul>     
+					                                            </div>
+					                                            
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </dd>
+<!-- 					                        <dd class="pos-right clearfix"> -->
+<!-- 					                            <div class="circ"></div> -->
+<!-- 					                            <div class="time">2018-06-10  21:45</div> -->
+<!-- 					                            <div class="events"> -->
+<!-- 					                                <div class="events-header">平台签收</div> -->
+<!-- 					                                <div class="events-body"> -->
+<!-- 					                                    <div class="row"> -->
+<!-- 					                                        <div class="col-md-6 pull-left"> -->
+<!-- 					                                            <img class="events-object img-responsive img-rounded" src="img/dog01.png" /> -->
+<!-- 					                                        </div> -->
+<!-- 					                                        <div class="events-desc"> -->
+<!-- 					                                            <ul> -->
+<!-- 					                                            	<li>地点：XX分公司</li> -->
+<!-- 					                                            	<li>操作人：XX客服</li> -->
+<!-- 					                                            	<li>详细信息：</li> -->
+<!-- 					                                            </ul> -->
+<!-- 					                                        </div> -->
+<!-- 					                                    </div> -->
+<!-- 					                                </div> -->
+<!-- 					                            </div> -->
+<!-- 					                        </dd> -->
+<!-- 					                        <dd class="pos-right clearfix"> -->
+<!-- 					                            <div class="circ"></div> -->
+<!-- 					                            <div class="time">Jan 21</div> -->
+<!-- 					                            <div class="events"> -->
+<!-- 					                                <div class="events-header">A Very Very Looooooooooooooooooooong Event Heading</div> -->
+<!-- 					                                <div class="events-body"> -->
+<!-- 					                                    <div class="row"> -->
+<!-- 					                                        <div class="col-md-6 pull-left"> -->
+<!-- 					                                            <img class="events-object img-responsive img-rounded" src="img/cat01.png" /> -->
+<!-- 					                                        </div> -->
+<!-- 					                                        <div class="events-desc"> -->
+<!-- 					                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
+<!-- 					                                        </div> -->
+<!-- 					                                    </div> -->
+<!-- 					                                    <div class="row"> -->
+<!-- 					                                        <div class="col-md-6 pull-left"> -->
+<!-- 					                                            <img class="events-object img-responsive img-rounded" src="img/cat02.png" /> -->
+<!-- 					                                        </div> -->
+<!-- 					                                        <div class="events-desc"> -->
+<!-- 					                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
+<!-- 					                                        </div> -->
+<!-- 					                                    </div> -->
+<!-- 					                                    <div class="row"> -->
+<!-- 					                                        <div class="col-md-6 pull-left"> -->
+<!-- 					                                            <img class="events-object img-responsive img-rounded" src="img/cat03.png" /> -->
+<!-- 					                                        </div> -->
+<!-- 					                                        <div class="events-desc"> -->
+<!-- 					                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
+<!-- 					                                        </div> -->
+<!-- 					                                    </div> -->
+<!-- 					                                </div> -->
+<!-- 					                                <div class="events-footer"> -->
+					
+<!-- 					                                </div> -->
+<!-- 					                            </div> -->
+<!-- 					                        </dd> -->
+<!-- 					                        <dd class="pos-right clearfix"> -->
+<!-- 					                            <div class="circ"></div> -->
+<!-- 					                            <div class="time">Jan 07</div> -->
+<!-- 					                            <div class="events"> -->
+<!-- 					                                <div class="events-header">Event Heading</div> -->
+<!-- 					                                <div class="events-body"> -->
+<!-- 					                                    <div class="row"> -->
+<!-- 					                                        <div class="col-md-6 pull-left"> -->
+<!-- 					                                            <img class="events-object img-responsive img-rounded" src="img/rabbit01.png" /> -->
+<!-- 					                                        </div> -->
+<!-- 					                                        <div class="events-desc"> -->
+<!-- 					                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
+<!-- 					                                        </div> -->
+<!-- 					                                    </div> -->
+<!-- 					                                </div> -->
+<!-- 					                            </div> -->
+<!-- 					                        </dd> -->
+					                    </dl>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+											
+					</div>
+					
+<!-- 					签收回单详情 -->
+					<button id="myDeliveryRejectDetailsButtom" ng-show="false" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:100%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+            </div>
+            <div class="modal-body">
+            	<table class="table table-striped table-bordered">
+	            	<thead>
+	                            <tr>
+	                                <th>序号</th>
+	                                <th>商品编码</th>
+	                                <th>名称</th>
+	                                <th>拒收数量</th>
+	                                <th>拒收原因</th>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            <tr ng-repeat="t in DeliveryRejectDetails">
+	                                <td>{{$index+1}}</td>
+	                                <td>{{t.comodiyCode}}</td>
+	                                <td>{{t.comodityName}}</td>
+	                                <td>{{t.rejectPieceNum}}</td>
+									<td>{{t.reason}}</td>
+	                            </tr>
+	                            </tbody>
+	        	</table>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+					
+	            </div>
+	           </div>
+           </div>

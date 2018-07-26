@@ -12,5 +12,6 @@ class PageController {
 
     @GetMapping(Array("main"))
     def toMain: String = "main"
+
 }
 

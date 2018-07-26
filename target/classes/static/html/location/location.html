@@ -1,0 +1,52 @@
+<div>
+		<div class="col-md-12 col-sm-6 col-xs-12">
+<!-- 	        <div class="x_panel"> -->
+	            <div class="x_content">
+<!-- 	            	<div> -->
+<!-- 	            		<h2>����Χ����Ϣ</h2> -->
+<!-- 	            	</div> -->
+					<div class="col-xs-12">
+						<form class="form-inline">
+							<div class="pull-right">
+								<button ng-click="getLocationInfo()" class="btn btn-default"><i class="fa fa-search"></i></button>
+							</div>
+		              		<div class="input-group input-group-sm pull-right" style="margin-top:2px">
+								<label class="sr-only">名称</label>
+								<input type="text" class="form-control" ng-model="searchLocation.name" placeholder="名称">
+							</div>
+							<div class="input-group input-group-sm pull-left" style="margin-top:2px">
+								<label ng-repeat="x in ['链通','平台','客户']" style="margin:5px 10px 0px 5px">
+									<input type="checkbox" class="flat"
+	                                ng-checked="true"
+	                                ng-click="updateSelection($event,x)"> {{x}}
+								</label>
+								
+					         </div>
+<!-- 							<button type="button" class="btn btn-primary" ng-click="openAddAppointView()">添加</button> -->
+<!-- 							<div class="pull-right"> -->
+<!-- 								<button ng-click="getProvinceInfo()" class="btn btn-default"><i class="fa fa-search"></i></button> -->
+<!-- 							</div> -->
+<!-- 		              		<div class="input-group input-group-sm pull-right" style="margin-top:2px"> -->
+<!-- 								<label class="sr-only">省份名称</label> -->
+<!-- 								<input type="text" class="form-control" ng-model="province.name" placeholder="省份名称"> -->
+<!-- 							</div> -->
+<!-- 							<div class="input-group input-group-sm pull-right" style="margin-top:2px;width:16%;margin-right:5px"> -->
+<!-- 								<select class="form-control pull-right" style="width:65%" ng-model="selectedQueryCountry" ng-options="x.name for x in queryCountrys" ng-change="selectQueryCountry()"> -->
+<!-- 								</select> -->
+<!-- 								<label class="pull-right" style="margin-top:5px">国家名称:</label> -->
+<!-- 							</div> -->
+							
+						</form>
+					</div>
+	                <div class="col-xs-12">
+	                    <div id="container" style="height:{{locationdivheight}}">
+	                    	
+	                    </div>
+	                    
+	                </div>
+	            </div>
+	           </div>
+	           
+				
+	           
+           </div>

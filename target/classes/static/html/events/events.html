@@ -1,0 +1,349 @@
+<div>
+		<div class="col-md-12 col-sm-6 col-xs-12">
+<!-- 	        <div class="x_panel"> -->
+	            <div class="x_content">
+<!-- 	            	<div> -->
+<!-- 	            		<h2>����Χ����Ϣ</h2> -->
+<!-- 	            	</div> -->
+					<div class="col-xs-12">
+						<form class="form-inline">
+							<button type="button" class="btn btn-primary" ng-click="openAddEventView()">添加</button>
+							<div class="pull-right">
+								<button ng-click="getEventsInfo()" class="btn btn-default"><i class="fa fa-search"></i></button>
+							</div>
+		              		<div class="input-group input-group-sm pull-right" style="margin-top:2px">
+								<label class="sr-only">单号名称</label>
+								<input type="text" class="form-control" ng-model="event.bolSid" placeholder="请输入单号">
+							</div>
+							
+						</form>
+					</div>
+	                <div class="col-xs-12">
+	                    <div style="overflow: scroll;height:{{eventstableheight}}">
+	                        <table class="table table-striped table-bordered" style="width:3700px">
+	                            <thead>
+		                            <tr>
+		                                <th></th>
+		                                <th>事件编号</th>
+		                                <th>总部组织ID</th>
+										<th>业务类型</th>
+										<th>单证编号</th>
+		                                <th>操作类型</th>
+		                                <th>地点名称</th>
+										<th>操作时间</th>
+										<th>操作人</th>
+		                                <th>操作对象类型</th>
+		                                <th>上一地点</th>
+										<th>下一地点</th>
+										<th>原因</th>
+		                                <th>创建人</th>
+		                                <th>创建时间</th>
+										<th>状态</th>
+										<th>数据源设备类型</th>
+		                                <th>设备编号</th>
+		                                <th>重量体积信息</th>
+										<th>扩展信息</th>
+										<th>创建日期</th>
+										<th>操作</th>
+		                            </tr>
+	                            </thead>
+	                            <tbody>
+		                            <tr ng-repeat="t in events">
+		                                <td>{{20*indexPage+$index+1}}</td>
+		                                <td style="width:275px">{{t.eventId}}</td>
+										<td style="width:275px">{{t.masterOrgId}}</td>
+										<td style="width:100px">{{t.bizTypeId}}</td>
+										<td style="width:180px">{{t.bolSid}}</td>
+										<td style="width:100px">{{t.operateTypeId}}</td>
+										<td style="width:275px">{{t.locationName}}</td>
+										<td style="width:180px">{{t.operateDate}}</td>
+										<td style="width:100px">{{t.operateUserId}}</td>
+										<td style="width:100px">{{t.opBolTypeId}}</td>
+										<td style="width:275px">{{t.preLocationId}}</td>
+										<td style="width:275px">{{t.nextLocationId}}</td>
+										<td style="width:275px">{{t.reasonId}}</td>
+										<td style="width:100px">{{t.createPartyId}}</td>
+										<td style="width:180px">{{t.createdDate}}</td>
+										<td style="width:100px">{{t.activeStatus}}</td>
+										<td style="width:180px">{{t.scanSourceTypeId}}</td>
+										<td style="width:275px">{{t.deviceId}}</td>
+										<td style="width:100px">{{t.weightCubeInfo}}</td>
+										<td style="width:100px">{{t.extendInfo}}</td>
+										<td style="width:100px">{{t.createdDay}}</td>
+										<td style="padding:0px">
+											<editevent class="btn btn-primary" style="padding:3px;margin:0px;margin-top:3px" title="编辑" ng-model="t">编辑</editevent>
+										</td>
+		                            </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                    <div class="box-tools pull-left" style="font-family:'黑体'">
+			            	<span class="pagination pagination-sm inline">总数:{{count}}</span>
+			            </div>
+	                    
+	                    <div class="box-tools pull-right">
+							<div id="Pagination"></div>
+			            </div>
+	                    
+	                </div>
+	            </div>
+	           </div>
+	           
+<!-- 	           运单添加页面 -->
+				<button ng-show="false" id="addeventbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myAddEventModal">开始演示模态框</button>
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myAddEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				                <h4 class="modal-title" id="myModalLabel">添加事件</h4>
+				            </div>
+				            <div class="modal-body">
+				            	<form class="form-horizontal" role="form">
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">总部组织ID：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="总部组织ID" ng-model="addevent.masterOrgId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">业务类型：</label>
+								    <div class="col-sm-6">
+								      <select class="form-control" ng-model="addevent.bizTypeId">
+								      	<option ng-selected="true" value="快递">快递</option>
+								      	<option value="快运">快运</option>
+								      	<option value="城配">城配</option>
+									  </select>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">单证编号：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control" placeholder="单证编号" ng-model="addevent.bolSid">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作类型：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="操作类型" ng-model="addevent.operateTypeId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">地点名称：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="地点名称" ng-model="addevent.locationName">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作人：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="操作人" ng-model="addevent.operateUserId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作对象类型：</label>
+								    <div class="col-sm-6">
+								      <select class="form-control" ng-model="addevent.opBolTypeId">
+								      	<option value="package">包</option>
+								      	<option ng-selected="true" value="bol">运单</option>
+								      	<option value="mainBol">主单</option>
+								      	<option value="subBol">子单</option>
+									  </select>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">上一地点：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="上一地点" ng-model="addevent.preLocationId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">下一地点：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="下一地点" ng-model="addevent.nextLocationId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">原因：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="原因" ng-model="addevent.reasonId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">创建人：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="创建人" ng-model="addevent.createPartyId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">状态：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="状态" ng-model="addevent.activeStatus">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">数据设备类型：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="数据设备类型" ng-model="addevent.scanSourceTypeId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">设备编号：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="设备编号" ng-model="addevent.deviceId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">重量体积信息：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="重量体积信息" ng-model="addevent.weightCubeInfo">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">扩展信息：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="扩展信息" ng-model="addevent.extendInfo">
+								    </div>
+								  </div>
+								  
+								</form>
+				            </div>
+				            <div class="modal-footer">
+				                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeAddEventButton">关闭</button>
+				                <button type="button" class="btn btn-primary" ng-click="saveAddEvent()">确定</button>
+				            </div>
+				        </div><!-- /.modal-content -->
+				    </div><!-- /.modal -->
+				</div>
+				
+				
+<!-- 				编辑页面 -->
+				<button ng-show="false" id="editeventbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myEditEventModal">开始演示模态框</button>
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myEditEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				                <h4 class="modal-title" id="myModalLabel">修改事件</h4>
+				            </div>
+				            <div class="modal-body">
+				            	<form class="form-horizontal" role="form">
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">总部组织ID：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="总部组织ID" ng-model="editevent.masterOrgId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">业务类型：</label>
+								    <div class="col-sm-6">
+								      <select class="form-control" ng-model="editevent.bizTypeId">
+								      	<option ng-selected="editevent.bizTypeId=='快递'" value="快递">快递</option>
+								      	<option ng-selected="editevent.bizTypeId=='快运'" value="快运">快运</option>
+								      	<option ng-selected="editevent.bizTypeId=='城配'" value="城配">城配</option>
+									  </select>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">单证编号：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control" placeholder="单证编号" ng-model="editevent.bolSid">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作类型：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="操作类型" ng-model="editevent.operateTypeId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">地点名称：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="地点名称" ng-model="editevent.locationName">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作人：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="操作人" ng-model="editevent.operateUserId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">操作对象类型：</label>
+								    <div class="col-sm-6">
+								      <select class="form-control" ng-model="editevent.opBolTypeId">
+								      	<option ng-selected="editevent.opBolTypeId=='package'" value="package">包</option>
+								      	<option ng-selected="editevent.opBolTypeId=='bol'" value="bol">运单</option>
+								      	<option ng-selected="editevent.opBolTypeId=='mainBol'" value="mainBol">主单</option>
+								      	<option ng-selected="editevent.opBolTypeId=='subBol'" value="subBol">子单</option>
+									  </select>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">上一地点：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="上一地点" ng-model="editevent.preLocationId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">下一地点：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="下一地点" ng-model="editevent.nextLocationId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">原因：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="原因" ng-model="editevent.reasonId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">创建人：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="创建人" ng-model="editevent.createPartyId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">状态：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="状态" ng-model="editevent.activeStatus">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">数据设备类型：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="数据设备类型" ng-model="editevent.scanSourceTypeId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">设备编号：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="设备编号" ng-model="editevent.deviceId">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">重量体积信息：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="重量体积信息" ng-model="editevent.weightCubeInfo">
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="firstname" class="col-sm-4 control-label">扩展信息：</label>
+								    <div class="col-sm-6">
+								      <input type="text" class="form-control"  placeholder="扩展信息" ng-model="editevent.extendInfo">
+								    </div>
+								  </div>
+								  
+								</form>
+				            </div>
+				            <div class="modal-footer">
+				                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeEditEventButton">关闭</button>
+				                <button type="button" class="btn btn-primary" ng-click="saveEditEvent()">确定</button>
+				            </div>
+				        </div><!-- /.modal-content -->
+				    </div><!-- /.modal -->
+				</div>
+	           
+           </div>

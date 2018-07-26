@@ -2,7 +2,7 @@ package com.dk.springboot.serviceImpl
 
 import com.dk.springboot.entity.User
 import com.dk.springboot.service.UserServer
-import com.dk.springboot.until.DBConnectionPool
+import com.dk.springboot.util.DBConnectionPool
 import org.springframework.stereotype.Service
 
 @Service

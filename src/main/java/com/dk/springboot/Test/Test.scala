@@ -1,6 +1,6 @@
 package com.dk.springboot.Test
 
-import com.dk.springboot.until.DBConnectionPool
+import com.dk.springboot.util.DBConnectionPool
 
 
 class Test {

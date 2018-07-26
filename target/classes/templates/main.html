@@ -1,11 +1,526 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp" ng-controller="parentCtrl">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>物流运营管理中心</title>
+    <!--title图标-->
+    <!--     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/> -->
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/font-awesome.min.css" rel="stylesheet"/>
+    <!-- NProgress -->
+    <link href="vendors/nprogress.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="vendors/green.css" rel="stylesheet"/>
+    <!-- bootstrap-progressbar -->
+    <link href="vendors/bootstrap-progressbar-3.3.4.min.css"
+          rel="stylesheet"/>
+    <!-- JQVMap -->
+    <link href="vendors/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/daterangepicker.css" rel="stylesheet"/>
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet"/>
+    <!--     <link href="css/zTreeStyle/zTreeStyle.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/map/map.css"/>
+    <link rel="stylesheet" type="text/css" href="css/map/main1119.css"/>
+    <link rel="stylesheet" type="text/css" href="css/map/location.css"/>
+    <link rel="stylesheet" type="text/css" href="laydate/default/laydate.css"/>
+    <link rel="stylesheet" type="text/css" href="css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/src/jquery.typeahead.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+
+    <link rel="stylesheet" href="css/jquery.eeyellow.Timeline_bak.css"/>
+
+
+    <!--     <link rel="stylesheet" type="text/css" href="build/css/custom.min.css"> -->
+    <!-- 引入 ECharts 文件 -->
+    <!--     <script src="js/china.js"></script> -->
+    <!--     <script src="js/echa/echarts.simple.min.js"></script> -->
+    <!--     <script src="js/echa/echarts.min.js"></script> -->
+
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/china.js"></script>
+
+    <script src="laydate/laydate.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="index.js"></script>
+    <style>
+/*     	.myul li{ */
+/*     		list-style-type:none; */
+/*     	} */
+		.boltable tr td{
+			border: 0px
+		}
+    	p{
+    		margin:0px
+    	}
+        a {
+            cursor: pointer
+        }
+        .amap-marker .marker-route {
+            position: absolute;
+            width: 40px;
+            height: 44px;
+            color: #e90000;
+            background: url(http://webapi.amap.com/theme/v1.3/images/newpc/poi-1.png) no-repeat;
+            cursor: pointer;
+        }
+        .amap-marker .marker-marker-bus-from {
+            background-position: -334px -180px;
+        }
+        .amap-marker .marker-marker-bus-end {
+            background-position: -334px -135px;
+
+        }
+        .amap-marker .marker-marker-bus-center {
+            width: 30px;
+            height: 34px;
+            background-position: -323px -58px;
+
+        }
+        .table {
+        	width:100%;
+        	margin-left:0
+        }
+        #container{
+        	left:0px
+        }
+        th{
+        	text-align:center
+        }
+        body tr td{
+        	font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif
+        }
+        span{
+        	font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif
+        }
+        .nav_menu{
+        	border-bottom: 0px;
+        	margin-bottom: 0px;
+        }
+        .col-sm-2{
+        	width:12%
+        }
+        td{
+        	text-align:center;
+        	padding:0px;
+        	margin: 0px;
+        }
+
+        .innerbox::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+        }
+        .innerbox::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.2);
+        }
+        .innerbox::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
+        }
+        #panel {
+            position: absolute;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+        .mydd:AFTER{
+        	width:355px
+        }
+        .nav-sm ul.nav.child_menu li:before{background:#5a748c;bottom:auto;content:"";height:8px;left:4px;margin-top:13px;position:absolute;right:auto;width:8px;z-index:1;border-radius:50%}
+        .nav-sm ul.nav.child_menu li:after{border-left:1px solid #5a748c;bottom:0;content:"";left:8px;position:absolute;top:0;}
+
+        .ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}
+
+/*     	::-webkit-scrollbar  */
+/* 		{  */
+/* 		    width: 16px;  */
+/* 		    height: 16px;  */
+/* 		    background-color: #F5F5F5;  */
+/* 		}  */
+
+		/*定义滚动条轨道 内阴影+圆角*/
+/* 		::-webkit-scrollbar-track  */
+/* 		{  */
+/* 		    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+/* 		    border-radius: 10px;  */
+/* 		    background-color: #F5F5F5;  */
+/* 		}  */
+
+		/*定义滑块 内阴影+圆角*/
+/* 		::-webkit-scrollbar-thumb  */
+/* 		{  */
+/* 		    border-radius: 10px;  */
+/* 		    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  */
+/* 		    background-color: #555;  */
+/* 		} */
+
+
+    </style>
+    <!--     <script type="text/javascript" -->
+    <!--             src="http://webapi.amap.com/maps?v=1.4.5&key=e2b47d10c61c8757b24e6799a549c743&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.MarkerClusterer"></script> -->
+    <!-- 	<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+    <!-- 	<script type="text/javascript" src="js/addToolBar.js"></script> -->
 </head>
-<body>
-    <h1>首页</h1>
+
+<!--   <body class="nav-md" oncontextmenu=self.event.returnValue=false> -->
+<body class="nav-md" style="background:#f7f7f7">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view" style="">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="#" class="site_title"><img style="height:30px;width:30px" src="images/wuliu.png"/>
+                        <span style="font-size:17px">物流运营管理中心</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="images/touxiang.png" alt="..."
+                             class="img-circle profile_img"/>
+                        <div class=""></div>
+                    </div>
+                    <div class="profile_info">
+                        <span>欢迎,</span>
+                        <h2>{{wname}}</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu"
+                     class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <!--                         <h3>�鿴</h3> -->
+                        <ul class="nav side-menu">
+                            <li><a ui-sref="index"><i class="fa fa-home"></i> 首页 </a>
+                            </li>
+                            <li><a id="operations"><i class="fa fa-cog"></i> 单证管理<span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="liantongbol">链通运单</a></li>
+                                    <li><a ui-sref="ganxianshipment">干线运输单</a></li>
+                                    <li><a ui-sref="chengpeishipment">配送运输单</a></li>
+                                    <li><a ui-sref="appointment">交仓预约单</a></li>
+                                    <li><a ui-sref="delivery">签收回单</a></li>
+                                </ul>
+                            </li>
+                            <li><a ui-sref="bol"><i class="fa fa-home"></i> 运单跟踪 </a>
+                            </li>
+                            <li><a id="operations"><i class="fa fa-cog"></i> 运营分析<span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="lineflow" id="lineflow">线路流量月累计</a></li>
+                                    <li><a ui-sref="clientvolume" id="clientvolume">客户货量月累计</a></li>
+                                    <li><a ui-sref="platform" id="platform">平台进仓排名</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cog"></i> 网点管理 <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="liantonglocation">物流网点</a></li>
+                                    <li><a ui-sref="pingtailocation">平台网点</a></li>
+                                    <li><a ui-sref="kehulocation">客户网点</a></li>
+                                    <li><a ui-sref="location">网点浏览</a></li>
+                                </ul>
+                            </li>
+                            <li><a ui-sref="events"><i class="fa fa-cog"></i> 事件管理 </a>
+                            </li>
+                            <li><a><i class="fa fa-cog"></i> 路由管理 <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="siteinbound">交件计划</a></li>
+                                    <li><a ui-sref="siteoutbound">接货计划</a></li>
+                                    <li><a ui-sref="vehicleplan">班次计划</a></li>
+                                    <li><a ui-sref="cargoplan">走货路由</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cog"></i> 时效管理 <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="wholeplan">全程时效</a></li>
+                                    <li><a ui-sref="tcinboundplan">进网时效</a></li>
+                                    <li><a ui-sref="tcoutboundplan">出网时效</a></li>
+                                    <li><a ui-sref="tctranferplan">中转时效</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cog"></i> 系统设置 <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="user">组织架构</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cog"></i> 区域设置 <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a ui-sref="province">省</a></li>
+                                    <li><a ui-sref="city">市</a></li>
+                                    <li><a ui-sref="area">县</a></li>
+                                    <li><a ui-sref="town">镇</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle" style="padding-top:10px">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right" style="height:40px">
+
+                        <li class=""><a href="javascript:;"
+                                        class="user-profile dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false" style="top:-6px;height:45px"> <i class="fa fa-user fa-3x"></i>&nbsp;{{wusername}}
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right" style="top:42px">
+                                <li><a ng-click="logout()"><i
+                                        class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a style="top:-6px;height:45px" class="dropdown-toggle"
+                                        data-toggle="dropdown"> <i class="fa fa-flag-o"></i> <span
+                                class="label label-danger">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header"><span
+                                        class="glyphicon glyphicon-warning-sign"></span>&nbsp;<span
+                                        style="color: red; font-family: '黑体'">警告</span></li>
+                                <li><span style="font-family: '黑体'">&nbsp;&nbsp;以下设备进入物流区
+								<span
+                                        style="padding-left: 30px">数量:<b style="color: red">0</b></span></span>
+                                    <ul class="menu" ng-repeat="x in warningInfos">
+                                        <li><a>
+                                            <h3>
+                                                <div>
+                                                    <span> 设备号</span> <small class="pull-right">{{x.number}}</small>
+                                                    <br/> <span> Vin号</span> <small class="pull-right">{{x.vin}}</small>
+                                                </div>
+                                            </h3>
+                                        </a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/welleplus/bindall.html" target="blank"> <!-- 					<h1> --> <!-- 										<div> -->
+                                        <small class="fa fa-arrow-right fa-2x">查看更多</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- /top navigation -->
+
+
+        <!--<div class="right_col" style="min-height:{{mainheight}};overflow:auto"-->
+        <!--ui-view=""></div>-->
+        <div class="right_col scroll-view" id="uiviewmain" ui-view="" style="height:{{divheight}}">
+
+        </div>
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Copyright © 2016 殿宽信息科技(上海)有限公司 备案/许可证编号：沪ICP备13044857号
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!--     <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+
+<!--<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
+<!--<script src="layui/layui.all.js"></script>-->
+<!--     <script src="http://webapi.amap.com/ui/1.0/main.js?v=1.0.10"></script> -->
+
+<!--     <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script> -->
+
+<!-- jQuery -->
+<script src="vendors/js/jquery.min.js"></script>
+<script src="js/cookie.js"></script>
+
+<script src="js/jquery.ztree.all-3.5.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.ztree.exedit-3.5.min.js"></script>
+
+<script src="js/jquery.pagination.js"></script>
+
+<script type="text/javascript" src="js/jquery.eeyellow.Timeline.js"></script>
+
+<!-- 高德地图 -->
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.7&amp;key=e2b47d10c61c8757b24e6799a549c743&amp;plugin=AMap.MarkerClusterer"></script>
+<!-- <script type="text/javascript" src='https://a.amap.com/jsapi_demos/static/resource/capitals.js'></script> -->
+
+<!-- 百度地图 -->
+<!-- <script type="text/javascript" src="js/bmap/bmap.js"></script> -->
+<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=oEPhemHF86gtygZBvz8c3QAuAAcBrHut"></script> -->
+
+<!-- Bootstrap -->
+<script src="vendors/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="vendors/js/fastclick.js"></script>
+<!-- NProgress -->
+<script src="vendors/js/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="vendors/js/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="vendors/js/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="vendors/js/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="vendors/js/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="vendors/js/skycons.js"></script>
+<!-- Flot -->
+<script src="vendors/js/jquery.flot.js"></script>
+<script src="vendors/js/jquery.flot.pie.js"></script>
+<script src="vendors/js/jquery.flot.time.js"></script>
+<script src="vendors/js/jquery.flot.stack.js"></script>
+<script src="vendors/js/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="vendors/js/jquery.flot.orderBars.js"></script>
+<script src="vendors/js/jquery.flot.spline.min.js"></script>
+<script src="vendors/js/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="vendors/js/date.js"></script>
+<!-- JQVMap -->
+<script src="vendors/js/jquery.vmap.js"></script>
+<script src="vendors/js/jquery.vmap.world.js"></script>
+<script src="vendors/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="vendors/js/moment.min.js"></script>
+<script src="vendors/js/daterangepicker.js"></script>
+<script src="css/src/jquery.typeahead.js"></script>
+
+
+<script src="vendors/skycons/skycons.js"></script>
+
+
+
+<!-- Custom Theme Scripts -->
+<script src="build/js/custom.min.js"></script>
+
+<!--<script src="controller/tree/treeCtrl.js"></script>-->
+<!--<script src="server/user/UserServer.js"></script>-->
+<!--<script src="server/project/ProjectServer.js"></script>-->
+<!--<script src="server/company/CompanyServer.js"></script>-->
+<!--<script src="server/section/SectionServer.js"></script>-->
+<!--<script src="controller/chinadata/provinceCtrl.js"></script>-->
+<!--<script src="server/chinadata/provinceServer.js"></script>-->
+<!--<script src="controller/chinadata/cityCtrl.js"></script>-->
+<!--<script src="server/chinadata/cityServer.js"></script>-->
+<!--<script src="controller/chinadata/areaCtrl.js"></script>-->
+<!--<script src="server/chinadata/areaServer.js"></script>-->
+<!--<script src="controller/chinadata/townCtrl.js"></script>-->
+<!--<script src="server/chinadata/townServer.js"></script>-->
+<!--<script src="server/chinadata/contryServer.js"></script>-->
+<!--<script src="controller/indexCtrl.js"></script>-->
+<!--<script src="controller/bol/bolCtrl.js"></script>-->
+<!--<script src="server/bol/bolServer.js"></script>-->
+<!--<script src="controller/operation/lineFlowCtrl.js"></script>-->
+<!--<script src="controller/operation/clientVolumeCtrl.js"></script>-->
+<!--<script src="controller/operation/platformCtrl.js"></script>-->
+<!--<script src="controller/bolmanager/liantongBolCtrl.js"></script>-->
+<!--<script src="controller/bolmanager/ganxianShipmentCtrl.js"></script>-->
+<!--<script src="controller/bolmanager/chengpeiShipmentCtrl.js"></script>-->
+<!--<script src="controller/bolmanager/appointmentCtrl.js"></script>-->
+<!--<script src="controller/bolmanager/deliveryCtrl.js"></script>-->
+<!--<script src="controller/detail/boldetailCtrl.js"></script>-->
+<!--<script src="controller/detail/deliverydetailCtrl.js"></script>-->
+<!--<script src="controller/detail/shipmentdetailCtrl.js"></script>-->
+<!--<script src="controller/location/liantonglocationCtrl.js"></script>-->
+<!--<script src="controller/location/pingtailocationCtrl.js"></script>-->
+<!--<script src="controller/location/kehulocationCtrl.js"></script>-->
+<!--<script src="server/location/locationServer.js"></script>-->
+<!--<script src="controller/location/locationCtrl.js"></script>-->
+<!--<script src="controller/events/eventsCtrl.js"></script>-->
+<!--<script src="server/events/eventsServer.js"></script>-->
+<!--<script src="controller/route/siteinboundCtrl.js"></script>-->
+<!--<script src="controller/route/siteoutboundCtrl.js"></script>-->
+<!--<script src="server/route/siteinboundServer.js"></script>-->
+<!--<script src="server/route/siteoutboundServer.js"></script>-->
+<!--<script src="controller/route/vehicleplanCtrl.js"></script>-->
+<!--<script src="controller/route/cargoplanCtrl.js"></script>-->
+<!--<script src="server/route/vehicleplanServer.js"></script>-->
+<!--<script src="server/route/cargoplanServer.js"></script>-->
+<!--<script src="controller/plan/wholeplanCtrl.js"></script>-->
+<!--<script src="controller/plan/tcinboundplanCtrl.js"></script>-->
+<!--<script src="controller/plan/tcoutboundplanCtrl.js"></script>-->
+<!--<script src="controller/plan/tctranferplanCtrl.js"></script>-->
+<!--<script src="server/plan/wholeplanServer.js"></script>-->
+<!--<script src="server/plan/tcinboundplanServer.js"></script>-->
+<!--<script src="server/plan/tcoutboundplanServer.js"></script>-->
+<!--<script src="server/plan/tctranferplanServer.js"></script>-->
+<!--<script src="controller/route/vehicleplanlegsCtrl.js"></script>-->
+
+<script>
+	$(function(){
+// 		var height = "570px";
+// 		var height = document.body.clientHeight+'px';
+// 		$("#uiviewmain").css("height",height);
+
+		$("li li").click(function (e) {
+	        $("li li").removeClass("active");
+	        console.log(e.target);
+	        var object = e.target;
+	        $(object).parent().addClass("active");
+	    });
+	})
+
+	//深拷贝对象
+	var objDeepCopy = function(source){
+	    var sourceCopy = {};
+	    for (var item in source) sourceCopy[item] = source[item];
+	    return sourceCopy;
+	}
+
+    app.controller("parentCtrl", function ($scope,$rootScope) {
+
+        $rootScope.divheight = window.innerHeight-51+"px";
+
+
+    });
+
+</script>
 
 </body>
 </html>
