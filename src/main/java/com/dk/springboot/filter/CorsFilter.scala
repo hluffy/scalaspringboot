@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletResponse
 
 import org.springframework.stereotype.Component
 
+/**
+  * 添加跨域请求头
+  */
 @Component
 class CorsFilter extends Filter{
     override def init(filterConfig: FilterConfig): Unit = {}
@@ -17,7 +20,7 @@ class CorsFilter extends Filter{
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-        System.out.println("*********************************过滤器被使用**************************");
+//        System.out.println("*********************************过滤器被使用**************************");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

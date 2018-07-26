@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>登录</title>
+    <meta name="author" content="DeathGhost" />
+    <link rel="stylesheet" type="text/css" href="css/login/style.css"
+          tppabs="login/css/style.css" />
+    <style>
+body {
+	height: 100%;
+	background: #070b17;
+	overflow: hidden;
+}
+
+canvas {
+	z-index: -1;
+	position: absolute;
+}
+</style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/login/verificationNumbers.js"
+            tppabs="js/login/verificationNumbers.js"></script>
+    <script src="js/login/Particleground.js"
+            tppabs="js/login/Particleground.js"></script>
+    <script>
+	$(document).ready(function() {
+		//粒子背景特效
+		$('body').particleground({
+			dotColor : '#2c3652',
+			lineColor : '#2c3652'
+		});
+	});
+
+
+	$(document).keyup(function(event){
+		 if(event.keyCode ==13){
+		  $("#loginbutton").click();
+		 }
+		});
+</script>
+</head>
+<body>
+<dl class="admin_login">
+    <dt>
+        <strong> 物流运营管理中心</strong> <em></em>
+    </dt>
+    <dd class="user_icon">
+        <input id="name" type="text" placeholder="账号" class="login_txtbx" />
+    </dd>
+    <dd class="pwd_icon">
+        <input id="pwd" type="password" placeholder="密码" class="login_txtbx" />
+    </dd>
+    <dd style="background-color: rgb(9, 13, 23)">
+        <input id="loginbutton" type="button" value="立即登录" class="submit_btn" />
+    </dd>
+    <dd>
+        <p>
+            <img style="height: 15px; width: 30px" src="images/logo.png"/>
+            Copyright © 2016 殿宽信息科技(上海)有限公司
+        </p>
+        <p>
+            备案许可证编号： &nbsp;&nbsp;&nbsp;
+            沪ICP备13044857号
+        </p>
+    </dd>
+</dl>
+
+</body>
+<script>
+    $("#loginbutton").click(function(){
+        var data = {}
+        data.username = $("#name").val()
+        data.password = $("#pwd").val()
+        console.log(data)
+        $.ajax({
+            type:"post",
+            url:"/login",
+            data:data,
+            success:function(data){
+                if(data.status){
+                    window.location.href = "main"
+                }else{
+                    alert(data.message)
+                }
+            }
+        })
+    });
+
+</script>
+</html>
