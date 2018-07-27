@@ -8,7 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat
 
 import scala.beans.BeanProperty
 
-
+/**
+  * 用户
+  */
 @Entity(name = "users")
 @Table(name="users")
 class User extends Serializable {

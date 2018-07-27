@@ -30,6 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    .state('province',{
 	    	url:'/province',
 	    	templateUrl:'html/chinadata/province.html',
+	    	controller:'provinceCtrl'
 	    })
 	    .state('city',{
 	    	url:'/city',

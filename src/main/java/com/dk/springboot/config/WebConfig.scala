@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.{InterceptorRegistry, W
 @SpringBootConfiguration
 class WebConfig extends WebMvcConfigurerAdapter{
     override def addInterceptors(registry: InterceptorRegistry): Unit = {
-        registry.addInterceptor(new MyInterceptor).addPathPatterns("/**").excludePathPatterns("/page/login","/login")
+        registry.addInterceptor(new MyInterceptor).addPathPatterns("/**").excludePathPatterns("/page/login","/login","/province/*")
     }
 
 
