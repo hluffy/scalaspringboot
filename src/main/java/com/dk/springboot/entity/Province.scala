@@ -4,6 +4,9 @@ import javax.persistence._
 
 import scala.beans.BeanProperty
 
+/**
+  * 省
+  */
 @Entity(name="province")
 @Table(name="province")
 class Province extends Serializable {
@@ -32,6 +35,10 @@ class Province extends Serializable {
     @Transient
     @BeanProperty
     var page:Int = _
+
+//    @OneToMany(mappedBy = "province",cascade = Array(CascadeType.ALL),fetch = FetchType.LAZY)
+//    @Transient
+//    var city:List[City] = _
 
     override def toString: String = code+":"+name+":"+countryCode+":"+polygon+":"+page
 
