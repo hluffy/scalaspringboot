@@ -31,7 +31,7 @@ app.service('provinceServer',function($q,$http){
 //	根据国家code查询省份信息
 	this.getProvinceByCountryCode = function(code){
 		var deferred = $q.defer();
-		$http.get('/dkvan-wuliu/province/getprovincebycountrycode.do?code='+code).success(function(data){
+		$http.get('/province/findbycountrycode?countryCode='+code).success(function(data){
 			deferred.resolve(data);
 		}).error(function(){
 			deferred.reject("查询失败")

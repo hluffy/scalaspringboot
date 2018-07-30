@@ -35,6 +35,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    .state('city',{
 	    	url:'/city',
 	    	templateUrl:'html/chinadata/city.html',
+	    	controller:'cityCtrl'
 	    })
 	    .state('area',{
 	    	url:'/area',

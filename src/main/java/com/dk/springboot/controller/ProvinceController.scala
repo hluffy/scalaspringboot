@@ -19,7 +19,6 @@ class ProvinceController{
 
     @RequestMapping(value=Array("findall"))
     def findAll(@RequestBody info:Province) = {
-        println(info)
 
         val result = new Result
         result.setStatus(true)
@@ -33,6 +32,26 @@ class ProvinceController{
         }
 
         result
+    }
+
+    /**
+      * 根据countrycode查询省份信息
+      * @param countryCode
+      * @return
+      */
+    @RequestMapping(Array("findbycountrycode"))
+    def findByCountryCode(countryCode:Long) = {
+        val result = new com.dk.springboot.newresult.Result
+        if(countryCode==null){
+            result.status = false
+            result.message = "参数不能为空"
+        }else{
+            result.status = true
+            result.message = "查询成功"
+            result.data = provinceRepository.findByCountryCode(countryCode)
+        }
+        result
+
     }
 
 }

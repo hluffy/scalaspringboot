@@ -11,4 +11,11 @@ trait ProvinceRepository extends JpaRepository[Province,java.lang.Long]{
 
     def findByName(name:String,pageable:Pageable):Page[Province]
 
+    /**
+      * 根据countrycode查询省份信息
+      * @param countryCode
+      * @return
+      */
+    def findByCountryCode(countryCode:Long):java.util.List[Province]
+
 }

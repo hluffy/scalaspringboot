@@ -24,9 +24,9 @@ class City {
     @BeanProperty
     var countryCode:Long = _
 
-//    @Column(name="provincecode")
-//    @BeanProperty
-//    var provinceCode:Long = _
+    @Column(name="provincecode",insertable = false,updatable = false)
+    @BeanProperty
+    var provinceCode:Long = _
 
     @Column(name="polygon")
     @BeanProperty
@@ -36,9 +36,9 @@ class City {
     @BeanProperty
     var countryName:String = "中国"
 
-    @Transient
-    @BeanProperty
-    var provinceName:String = _
+//    @Transient
+//    @BeanProperty
+//    var provinceName:String = _
 
 //    @Transient
 //    @BeanProperty
@@ -53,5 +53,11 @@ class City {
     @JoinColumn(name="countrycode",insertable = false,updatable = false)
     @BeanProperty
     var country:Country = _
+
+    @Transient
+    @BeanProperty
+    var page:Int = _
+
+    override def toString: String = code+":"+name+":"+page
 
 }
