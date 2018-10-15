@@ -444,6 +444,7 @@
 <script src="service/chinadata/countryServer.js"></script>
 <script src="controller/chinadata/cityCtrl.js"></script>
 <script src="service/chinadata/cityServer.js"></script>
+<script src="service/logout/logoutServer.js"></script>
 
 <!--<script src="controller/tree/treeCtrl.js"></script>-->
 <!--<script src="server/user/UserServer.js"></script>-->
@@ -519,9 +520,18 @@
 	    return sourceCopy;
 	}
 
-    app.controller("parentCtrl", function ($scope,$rootScope) {
+
+
+    app.controller("parentCtrl", function ($scope,$rootScope,logoutServer) {
 
         $rootScope.divheight = window.innerHeight-51+"px";
+
+        $scope.logout = function(){
+            console.log(232323323);
+            logoutServer.logout().then(function(){
+                window.location.href = "http://localhost:8080/page/login";
+            });
+        }
 
 
     });
